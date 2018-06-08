@@ -23,7 +23,7 @@ echo "\n\n ------> Install iTerm2\n"
 curl https://iterm2.com/downloads/stable/iTerm2-*.zip -o ./tmp/iTerm2.zip
 unzip iTerm2.zip
 mv iTerm.app/ /Applications/
-rm iTerm2.zip
+rm ./tmp/iTerm2.zip
 echo "\n ------> iTerm2 installed. :)\n\n"
 
 
@@ -34,6 +34,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 echo "\n ------> oh-my-zsh installed. :)\n\n"
 
 
+# Install Alfred App
+curl https://cachefly.alfredapp.com/Alfred_*.dmg -o ./tmp/Alfred.dmg
+# TODO
 
 # Install RVM (Ruby Version Manager)
 echo "\n\n ------> Setup Ruby Env\n"
