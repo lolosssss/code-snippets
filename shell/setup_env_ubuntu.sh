@@ -19,22 +19,25 @@ apt-get install -y build-essential python wget openssh-server
 
 
 # Install nvm, node version manager
-if command -v nvm >/dev/null 2>&1; then
-    echo "[ Command nvm not exists. Installing... ]"
+if ! (command -v nvm >/dev/null 2>&1); then
+    echo "\n[ Command nvm not exists. Installing... ]"
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
     source ~/.bashrc
-    if command -v  nvm >/dev/null 2>&1; then
-        echo "[ Install nvm failed, please install manually. ]"
-        echo "[ Refer to https://github.com/creationix/nvm ]"
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    if ! (command -v  nvm >/dev/null 2>&1); then
+        echo "\n[ Install nvm failed, please install manually. ]"
+        echo "[ Refer to https://github.com/creationix/nvm ]\n"
         exit 1
     fi
 fi
-echo "[ Install node-v$NODE_VERSION ]"
+echo "\n[ Install node-v$NODE_VERSION ]\n"
 nvm install $NODE_VERSION
 if command -v node >/dev/null 2>&1; then
-    echo "[ node-v$NODE_VERSION installed ]"
+    echo "\n[ node-v$NODE_VERSION installed ]\n"
 else
-    echo "[ node-v$NODE_VERSION installation failed, please try to install manually ]"
+    echo "\n[ node-v$NODE_VERSION installation failed, please try to install manually ]"
     exit 1
 fi
 npm install -g nrm
@@ -56,6 +59,6 @@ npm install -g cordova ionic
 
 end_date=`date +"%F %T"`
 
-echo -e "\n[ Run \"$0\" Done. $start_date ~ $end_date ]\n"
+echo "\n[ Run \"$0\" Done. $start_date ~ $end_date ]\n"
 
 set -e
