@@ -11,7 +11,7 @@ start_date=`date +"%F %T"`
 # Software version
 NODE_VERSION="8.11.2"
 
-apt-get udpate
+apt-get update
 apt-get upgrade -y
 
 # Install dev essential dependencies
